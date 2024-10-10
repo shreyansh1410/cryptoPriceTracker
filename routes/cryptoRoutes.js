@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cryptoService = require('../services/cryptoService');
 
-// Endpoint to get stats for a specific cryptocurrency
+// Get stats for a specific cryptocurrency
 router.get('/stats', async (req, res) => {
   const { coin } = req.query;
   try {
@@ -13,7 +13,7 @@ router.get('/stats', async (req, res) => {
   }
 });
 
-// Endpoint to get standard deviation of prices for a specific cryptocurrency
+// Get standard deviation of prices for a specific cryptocurrency
 router.get('/deviation', async (req, res) => {
   const { coin } = req.query;
   try {
