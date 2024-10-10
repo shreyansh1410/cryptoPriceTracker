@@ -1,4 +1,3 @@
-// models/Crypto.js
 const mongoose = require("mongoose");
 
 const cryptoSchema = new mongoose.Schema({
@@ -18,12 +17,10 @@ const cryptoSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  date: {
+  timestamp: {
     type: Date,
     default: Date.now,
   },
 });
 
-const Crypto = mongoose.model("Crypto", cryptoSchema);
-
-module.exports = Crypto;
+module.exports = mongoose.model("Crypto", cryptoSchema);
