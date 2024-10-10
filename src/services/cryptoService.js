@@ -11,15 +11,21 @@ const fetchCryptoData = async (coin) => {
     method: "GET",
     headers: {
       accept: "application/json",
-      "x-cg-demo-api-key": process.env.COINGECKO_API_KEY || "", // Ensure the API key is sent if available
+      // Removed the API key header
     },
   };
 
   try {
     const response = await fetch(url, options);
-    const data = await response.json();
+    
+    // Check if the response is ok (status code in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
+    const data = await response.json();
     const coinData = data[coin];
+
     if (coinData) {
       return {
         coin,
