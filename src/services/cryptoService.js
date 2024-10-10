@@ -20,7 +20,8 @@ const fetchCryptoData = async (coin) => {
     
     // Check if the response is ok (status code in the range 200-299)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorBody = await response.text(); // Get the response body as text for detailed error
+      throw new Error(`HTTP error! status: ${response.status} - ${response.statusText} - Body: ${errorBody}`);
     }
 
     const data = await response.json();
