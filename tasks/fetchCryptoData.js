@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 const cryptoService = require("../services/cryptoService");
 
-// Task runs every 2 hours
+// Schedule the task to run every 2 hours
 cron.schedule("0 */2 * * *", async () => {
   try {
     await cryptoService.getLatestData("bitcoin");
@@ -12,8 +12,3 @@ cron.schedule("0 */2 * * *", async () => {
     console.error("Error fetching crypto data:", error.message);
   }
 });
-
-
-(async () => {
-  await cron.getTasks();
-})();
