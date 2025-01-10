@@ -1,11 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const connectDB = require("./config/db"); // Import the database config
-const cryptoRoutes = require("./routes/cryptoRoutes"); // Import routes
-const errorHandler = require("./middlewares/errorHandler"); // Import error handling middleware
-const { fetchCryptoDataOnce } = require("./cron/cronjob");
-
 dotenv.config();
+
+const connectDB = require("./src/config/db");
+const cryptoRoutes = require("./src/routes/cryptoRoutes");
+const errorHandler = require("./src/middlewares/errorHandler");
+const { fetchCryptoDataOnce } = require("./src/cron/cronjob");
+
 
 const app = express();
 connectDB(); // Connect to MongoDB
